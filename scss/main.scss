@@ -1,0 +1,129 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+
+// Import design system and component styles
+@use 'design-system';
+@use 'header';
+@use 'hero';
+@use 'projects';
+@use 'skills';
+@use 'benefits';
+@use 'cta';
+@use 'footer';
+@use 'modal';
+@use 'mobile';
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: design-system.$font-primary;
+  color: map.get(design-system.$colors, text-dark);
+  background-color: map.get(design-system.$colors, background);
+  line-height: 1.6;
+  overflow-x: hidden;
+  
+  &.menu-open {
+    overflow: hidden;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 design-system.$spacing-unit;
+}
+
+// Common section styles
+section {
+  padding: 6rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-size: design-system.$h1-size;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: map.get(design-system.$colors, primary);
+  }
+  
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+// Button styles
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  
+  &-primary {
+    background-color: map.get(design-system.$colors, primary);
+    color: map.get(design-system.$colors, text-light);
+    
+    &:hover {
+      background-color: color.adjust(map.get(design-system.$colors, primary), $lightness: -10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &-secondary {
+    background-color: map.get(design-system.$colors, secondary);
+    color: map.get(design-system.$colors, text-light);
+    
+    &:hover {
+      background-color: color.adjust(map.get(design-system.$colors, secondary), $lightness: -10%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Grid layouts
+.grid {
+  display: grid;
+  grid-gap: design-system.$grid-gap;
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: design-system.$spacing-unit; }
+.mt-2 { margin-top: design-system.$spacing-unit * 2; }
+.mb-1 { margin-bottom: design-system.$spacing-unit; }
+.mb-2 { margin-bottom: design-system.$spacing-unit * 2; }
+
+// Screen reader only class for accessibility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

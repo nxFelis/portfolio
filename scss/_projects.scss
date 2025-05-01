@@ -1,0 +1,103 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+.projects {
+  padding: 6rem 0;
+  background-color: map.get(ds.$colors, background);
+  
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: ds.$grid-gap;
+  }
+  
+  .project-card {
+    @include ds.project-card;
+    cursor: pointer; // Делаем курсор указателем для улучшения UX
+    
+    .project-card__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+    }
+    
+    .project-card__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to top,
+        rgba(map.get(ds.$colors, primary), 0.9),
+        rgba(map.get(ds.$colors, primary), 0.6) 50%,
+        rgba(map.get(ds.$colors, primary), 0.1)
+      );
+      color: map.get(ds.$colors, text-light);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      
+      @include ds.mobile {
+        padding: 1rem;
+      }
+      
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        
+        @include ds.mobile {
+          font-size: 1.1rem;
+        }
+      }
+      
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        
+        .tech {
+          background-color: rgba(255, 255, 255, 0.2);
+          padding: 0.3rem 0.6rem;
+          border-radius: 4px;
+          font-size: 0.8rem;
+          font-weight: 500;
+          
+          @include ds.mobile {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+          }
+        }
+      }
+    }
+    
+    &:hover .project-card__overlay {
+      opacity: 1;
+    }
+    
+    &:hover .project-card__image img {
+      transform: scale(1.05);
+    }
+    
+    &.hovered .project-card__overlay {
+      opacity: 1;
+    }
+  }
+}

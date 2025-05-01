@@ -1,0 +1,109 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+// Mobile specific styles with direct media query
+@media (max-width: 576px) {
+  section {
+    padding: 4rem 0;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .container {
+    width: 95%;
+    padding: 0 1rem;
+  }
+  
+  // Adjust spacing
+  .hero {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+  
+  // Adjust grid layouts for mobile
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  // Force single column layouts for mobile
+  .skills-grid,
+  .project-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+  
+  // Button adjustments for mobile touch
+  .btn {
+    padding: 0.8rem 1.6rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    
+    @media (min-width: 480px) {
+      display: inline-block;
+      width: auto;
+    }
+  }
+  
+  // Hero specific mobile styles
+  .hero__content {
+    text-align: center;
+    
+    .hero__subtitle {
+      font-size: 1rem !important;
+    }
+  }
+  
+  // Project cards mobile adjustments
+  .project-card {
+    .project-card__overlay {
+      opacity: 1 !important;
+      background: linear-gradient(
+        to top,
+        rgba(map.get(ds.$colors, primary), 0.95),
+        rgba(map.get(ds.$colors, primary), 0.7) 50%,
+        rgba(map.get(ds.$colors, primary), 0.2)
+      ) !important;
+    }
+    
+    // Reduce padding and text size for mobile
+    h3 {
+      font-size: 1.1rem !important;
+    }
+    
+    .tech {
+      font-size: 0.7rem !important;
+      padding: 0.2rem 0.4rem !important;
+    }
+  }
+  
+  // CTA section mobile adjustments
+  .cta {
+    .cta__content {
+      padding: 0 1rem;
+    }
+    
+    .cta__background {
+      height: 150px;
+    }
+  }
+}
+
+// Tablet adjustments (between mobile and desktop)
+@media (max-width: 992px) and (min-width: 577px) {
+  .hero__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  // Override mobile styles for tablet
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

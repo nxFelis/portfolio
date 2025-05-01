@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+.skills {
+  padding: 6rem 0;
+  background-color: rgba(map.get(ds.$colors, accent), 0.05);
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: ds.$grid-gap;
+  }
+  
+  .skill-item {
+    @include ds.card;
+    padding: 2rem;
+    text-align: center;
+    
+    i {
+      font-size: 3rem;
+      color: map.get(ds.$colors, primary);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: map.get(ds.$colors, text-dark);
+    }
+    
+    p {
+      color: rgba(map.get(ds.$colors, text-dark), 0.8);
+      font-size: 0.9rem;
+    }
+    
+    &:hover {
+      transform: translateY(-5px);
+      
+      i {
+        color: map.get(ds.$colors, secondary);
+      }
+    }
+  }
+}

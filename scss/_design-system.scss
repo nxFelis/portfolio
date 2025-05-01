@@ -1,0 +1,127 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+
+// Color scheme
+$colors: (
+  primary: #2A2A72,
+  secondary: #FF6B6B,
+  accent: #4ECDC4,
+  background: #F8F9FA,
+  text-dark: #2D3436,
+  text-light: #FFFFFF
+);
+
+// Typography
+$font-primary: 'Inter', sans-serif;
+$font-mono: 'Fira Code', monospace;
+$h1-size: clamp(2.5rem, 5vw, 3.5rem); // Responsive font size
+$h2-size: clamp(1.8rem, 4vw, 2.5rem);
+$h3-size: clamp(1.2rem, 3vw, 1.8rem);
+$body-size: 1rem;
+
+// Spacing and grid
+$spacing-unit: 1.5rem;
+$grid-gap: 2rem;
+
+// Breakpoints
+$breakpoints: (
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1200px
+);
+
+// Z-index layers
+$z-layers: (
+  base: 1,
+  menu: 50,
+  header: 100,
+  modal: 200
+);
+
+// Mixins
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin mobile {
+  @media (max-width: map.get($breakpoints, medium)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: map.get($breakpoints, large)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map.get($breakpoints, large)) {
+    @content;
+  }
+}
+
+// Card mixin
+@mixin card {
+  background: map.get($colors, text-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Project card mixin
+@mixin project-card {
+  @include card;
+  position: relative;
+  height: 0;
+  padding-bottom: 65%; // Aspect ratio
+  
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+// Button mixin
+@mixin button($bg-color, $text-color) {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: $bg-color;
+  color: $text-color;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: -10%);
+    transform: translateY(-2px);
+  }
+}

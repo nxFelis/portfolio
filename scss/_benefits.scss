@@ -1,0 +1,46 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+.benefits {
+  padding: 6rem 0;
+  background-color: map.get(ds.$colors, background);
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: ds.$grid-gap;
+  }
+  
+  .benefit-item {
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    background-color: rgba(map.get(ds.$colors, primary), 0.03);
+    transition: all 0.3s ease;
+    
+    i {
+      font-size: 2.5rem;
+      color: map.get(ds.$colors, secondary);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: map.get(ds.$colors, text-dark);
+    }
+    
+    p {
+      color: rgba(map.get(ds.$colors, text-dark), 0.8);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: map.get(ds.$colors, text-light);
+    }
+  }
+}

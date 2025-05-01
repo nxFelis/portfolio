@@ -1,0 +1,163 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+// Project Modal Styles
+.project-modal {
+  // Добавляем z-index, чтобы окно было поверх всего остального
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: map.get(ds.$z-layers, modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  
+  &.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  &__content {
+    background-color: map.get(ds.$colors, text-light);
+    border-radius: 8px;
+    max-width: 1000px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    
+    .project-modal.show & {
+      transform: translateY(0);
+    }
+  }
+  
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: map.get(ds.$colors, text-dark);
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: map.get(ds.$colors, secondary);
+    }
+  }
+  
+  &__header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: map.get(ds.$colors, primary);
+    }
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    .tag {
+      background-color: rgba(map.get(ds.$colors, accent), 0.1);
+      color: map.get(ds.$colors, primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  }
+  
+  &__body {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    
+    @include ds.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  
+  &__description {
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+      color: map.get(ds.$colors, primary);
+      
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      color: rgba(map.get(ds.$colors, text-dark), 0.9);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin-bottom: 2rem;
+      
+      li {
+        background-color: rgba(map.get(ds.$colors, primary), 0.05);
+        color: map.get(ds.$colors, primary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+    
+    .project-modal__links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      
+      @include ds.mobile {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+// Body overflow control
+body.modal-open {
+  overflow: hidden;
+}

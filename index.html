@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEVXPORT | Full-Stack Developer Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <!-- Project Modal (Располагаем модальное окно в начале body для лучшего z-index) -->
+  <div class="project-modal" id="project-modal">
+    <div class="project-modal__content">
+      <button class="project-modal__close" aria-label="Close modal">&times;</button>
+      <div class="project-modal__header">
+        <h2 id="modal-title">Project Title</h2>
+        <div class="project-modal__tags" id="modal-tags"></div>
+      </div>
+      <div class="project-modal__body">
+        <div class="project-modal__image">
+          <img id="modal-image" src="" alt="Project image" loading="lazy">
+        </div>
+        <div class="project-modal__description">
+          <h3>Project Overview</h3>
+          <p id="modal-description">Project description goes here...</p>
+          
+          <h3>Challenges & Solutions</h3>
+          <p id="modal-challenges">Challenges and solutions go here...</p>
+          
+          <h3>Technologies Used</h3>
+          <ul class="tech-list" id="modal-tech-list"></ul>
+          
+          <div class="project-modal__links">
+            <a href="#" id="modal-live-link" class="btn btn-primary" target="_blank">View Live</a>
+            <a href="#" id="modal-code-link" class="btn btn-secondary" target="_blank">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header with Navigation -->
+  <header class="header">
+    <div class="container header__content">
+      <h1 class="logo">DEVXPORT</h1>
+      <nav class="desktop-nav">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#benefits">Why Me</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div style="position: relative;">
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+        
+        <!-- Mobile Menu positioned relative to button -->
+        <div class="mobile-menu" id="mobile-menu">
+          <div class="mobile-menu__content">
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#benefits">Why Me</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content" data-aos="fade-up">
+        <h1 class="hero__slogan">One Passion. One Code. One Community!</h1>
+        <h2 class="hero__title">Full-Stack Developer | Node.js & Data Visualization Expert</h2>
+        <p class="hero__subtitle">Whether you're building APIs, interactive dashboards, or complex web apps — let's create something amazing together!</p>
+        <a href="#projects" class="btn btn-primary">Explore My Work →</a>
+      </div>
+      <div class="hero__grid">
+        <div class="hero__grid-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="hero__grid-content">
+            <h3>One<br>Code</h3>
+          </div>
+        </div>
+        <div class="hero__grid-item" data-aos="fade-up" data-aos-delay="200">
+          <!-- Empty grid item for design -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>What I Build</h2>
+      </div>
+      
+      <div class="project-grid">
+        <!-- Project 1 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Analytics Dashboard" loading="lazy">
+          </div>
+          <div class="project-card__overlay">
+            <h3>Real-Time Analytics Dashboard</h3>
+            <div class="tech-stack">
+              <span class="tech">Node.js</span>
+              <span class="tech">D3.js</span>
+              <span class="tech">Socket.io</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" alt="BioDiscovery AI Platform" loading="lazy">
+          </div>
+          <div class="project-card__overlay">
+            <h3>BioDiscovery AI Platform</h3>
+            <div class="tech-stack">
+              <span class="tech">React</span>
+              <span class="tech">LLM & RAG</span>
+              <span class="tech">Knowledge Graph</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74" alt="Financial Data Visualization" loading="lazy">
+          </div>
+          <div class="project-card__overlay">
+            <h3>Financial Data Visualization</h3>
+            <div class="tech-stack">
+              <span class="tech">TypeScript</span>
+              <span class="tech">Chart.js</span>
+              <span class="tech">GraphQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="project-card__image">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4" alt="API Gateway Solution" loading="lazy">
+          </div>
+          <div class="project-card__overlay">
+            <h3>API Gateway Solution</h3>
+            <div class="tech-stack">
+              <span class="tech">Node.js</span>
+              <span class="tech">Express</span>
+              <span class="tech">Redis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Tools & Technologies</h2>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-item" data-aos="fade-up">
+          <i class="fab fa-node-js"></i>
+          <h3>Node.js</h3>
+          <p>Server-side JavaScript runtime environment</p>
+        </div>
+        
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fab fa-react"></i>
+          <h3>React</h3>
+          <p>Frontend library for building user interfaces</p>
+        </div>
+        
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fab fa-js"></i>
+          <h3>TypeScript</h3>
+          <p>Typed superset of JavaScript</p>
+        </div>
+        
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-database"></i>
+          <h3>MongoDB</h3>
+          <p>NoSQL database for modern applications</p>
+        </div>
+        
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+          <i class="fas fa-chart-line"></i>
+          <h3>D3.js</h3>
+          <p>JavaScript library for data visualization</p>
+        </div>
+        
+        <div class="skill-item" data-aos="fade-up" data-aos-delay="500">
+          <i class="fas fa-server"></i>
+          <h3>Express</h3>
+          <p>Web application framework for Node.js</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Why Work With Me?</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item" data-aos="fade-up">
+          <i class="fas fa-code"></i>
+          <h3>Clean Code Architecture</h3>
+          <p>I write maintainable, well-documented code following best practices and industry standards.</p>
+        </div>
+        
+        <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-chart-line"></i>
+          <h3>Data-Driven Solutions</h3>
+          <p>Building interfaces that not only look good but provide actionable insights from your data.</p>
+        </div>
+        
+        <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Agile Development</h3>
+          <p>Adaptable workflow that evolves with your project needs and business requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta__content" data-aos="fade-up">
+        <h2>Ready to Turn Your Idea into Reality?</h2>
+        <p>Let's connect and discuss how I can help bring your vision to life.</p>
+        <a href="mailto:contact@devxport.com" class="btn btn-secondary">Schedule a Call →</a>
+      </div>
+      <div class="cta__background">
+        <div class="cta__text">Come Be Part of The Community!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__logo">DEVXPORT</div>
+        <div class="footer__social">
+          <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://t.me/" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 DEVXPORT. Code. Create. Innovate.</p>
+        <div class="footer__links">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

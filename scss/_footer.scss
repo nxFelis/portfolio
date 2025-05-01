@@ -1,0 +1,79 @@
+@use 'sass:map';
+@use 'design-system' as ds;
+
+.footer {
+  padding: 4rem 0 2rem;
+  background-color: map.get(ds.$colors, primary);
+  color: map.get(ds.$colors, text-light);
+  
+  .footer__content {
+    @include ds.flex-between;
+    margin-bottom: 3rem;
+    
+    @include ds.mobile {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
+  .footer__logo {
+    font-family: ds.$font-mono;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .footer__social {
+    display: flex;
+    gap: 1.5rem;
+    
+    a {
+      color: map.get(ds.$colors, text-light);
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: map.get(ds.$colors, secondary);
+      }
+    }
+  }
+  
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    @include ds.flex-between;
+    font-size: 0.9rem;
+    
+    @include ds.mobile {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    p {
+      opacity: 0.8;
+    }
+    
+    .footer__links {
+      display: flex;
+      gap: 2rem;
+      
+      @include ds.mobile {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      a {
+        color: map.get(ds.$colors, text-light);
+        opacity: 0.8;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

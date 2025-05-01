@@ -1,0 +1,16 @@
+{
+  "name": "my-awesome-portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx sass scss:css --watch & python -m http.server 5000"
+  },
+  "keywords": ["frontend", "data visualisation", "development", "bio"],
+  "author": "Svetlana K",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "sass": "^1.87.0"
+  }
+}
